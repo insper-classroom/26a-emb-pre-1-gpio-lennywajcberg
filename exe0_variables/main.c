@@ -1,18 +1,16 @@
 #include "stdio.h"
 
 void foo(int *a) {
-    *a = *a + 1; // acessa ponteiro
+    (*a)++;
 }
 
-void main(void) {
+int main(void) {
     int a = 0;
     int b = 0;
 
-    while (1) {
-        
+    while (a <= 5) {
         foo(&a);
-        if (a > 5) {
-            b = 1;
-        }
     }
+    b = 1;
+    return b;
 }

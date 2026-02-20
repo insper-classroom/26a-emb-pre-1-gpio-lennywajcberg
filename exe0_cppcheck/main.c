@@ -16,7 +16,6 @@ int main(void) {
         arr[i] = i;
     }
 
-    // usa as variáveis pra não gerar warning
     printf("result=%d, arr[0]=%d, arr[%d]=%d\n",
            result, arr[0], NUM_ELEMENTS - 1, arr[NUM_ELEMENTS - 1]);
 
