@@ -12,7 +12,7 @@ int main() {
 
   while (true) {
     gpio_put(LED_PIN_R, 1);
-    sleep_ms(250);
+    sleep_ms(2500);
 
     gpio_put(LED_PIN_R, 0);
     sleep_ms(250);
