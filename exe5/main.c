@@ -2,35 +2,35 @@
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
 
-const int BTN1 = 26;
-const int BTN2 = 7;
+const int BTN_PIN = 26;
+const int BTN_PIN_2 = 7;
 
 int main() {
-  stdio_init_all();
+    stdio_init_all();
 
-  gpio_init(BTN1); 
-  gpio_set_dir(BTN1, GPIO_IN); 
-  gpio_pull_up(BTN1);
-  gpio_init(BTN2); 
-  gpio_set_dir(BTN2, GPIO_IN); 
-  gpio_pull_up(BTN2);
+    gpio_init(BTN_PIN);
+    gpio_set_dir(BTN_PIN, GPIO_IN);
+    gpio_pull_up(BTN_PIN);
+
+    gpio_init(BTN_PIN_2);
+    gpio_set_dir(BTN_PIN_2, GPIO_IN);
+    gpio_pull_up(BTN_PIN_2);
+    int cnt_1 = 0;
+    int cnt_2 = 0;
+
+    while (true) {
+
+        if (!gpio_get(BTN_PIN)) {
+            printf("Botao 1: %d\n", cnt_1++);
+        }
+            while (!gpio_get(BTN_PIN));
+            sleep_ms(20);                
 
 
-  int cnt1 = 0, cnt2 = 0;
-
-  while (1) {
-    if (!gpio_get(BTN1)) {
-        printf("Botao 1: %d\n", ++cnt1);
-        sleep_ms(20);
-        while (!gpio_get(BTN1))
-        sleep_ms(20);
+        if (!gpio_get(BTN_PIN_2)) {
+            printf("Botao 2: %d\n", cnt_2++);
+        }
+            while (!gpio_get(BTN_PIN_2));     
+            sleep_ms(20);                
     }
-
-    if (!gpio_get(BTN2)) {
-        printf("Botao 2: %d\n", ++cnt2);
-        sleep_ms(20);
-        while (!gpio_get(BTN2)) 
-        sleep_ms(20);
-    }
-  }
 }
