@@ -7,6 +7,7 @@ const int BTN_PIN_2 = 7;
 
 int main() {
     stdio_init_all();
+    
 
     gpio_init(BTN_PIN);
     gpio_set_dir(BTN_PIN, GPIO_IN);
