@@ -30,20 +30,20 @@ int main() {
     if (gpio_get(BTN_RED) == 0 && estado_red == false) {
       gpio_put(LED_RED, 1);
       estado_red = true;
-      while (gpio_get(BTN_RED) == 0) { }     // espera soltar
+      while (gpio_get(BTN_RED) == 0) { }     
     } else if (gpio_get(BTN_RED) == 0 && estado_red == true) {
       gpio_put(LED_RED, 0);
       estado_red = false;
-      while (gpio_get(BTN_RED) == 0) { }     // espera soltar
+      while (gpio_get(BTN_RED) == 0) { }     
     }
     if (gpio_get(BTN_GREEN) == 0 && estado_green == false) {
       gpio_put(LED_GREEN, 1);
       estado_green = true;
-      while (gpio_get(BTN_GREEN) == 0) { }     // espera soltar
+      while (gpio_get(BTN_GREEN) == 0) { }     
     } else if (gpio_get(BTN_GREEN) == 0 && estado_green == true) {
       gpio_put(LED_GREEN, 0);
       estado_green = false;
-      while (gpio_get(BTN_GREEN) == 0) { }     // espera soltar
+      while (gpio_get(BTN_GREEN) == 0) { }     
     }
   }
 }
