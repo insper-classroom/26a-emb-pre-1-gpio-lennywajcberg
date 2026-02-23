@@ -27,7 +27,8 @@ int main() {
         printf("Botao 1: %d\n", cnt1);
 
         while (gpio_get(BTN1) == 0) { }  // evita quando segurar o botão e ficar contando, só conta quando soltar e apertar de novo
-      }
+        sleep_ms(20);                    // debounce da soltada
+      }    
     }
 
     // Botão 2
@@ -38,6 +39,7 @@ int main() {
         printf("Botao 2: %d\n", cnt2);
 
         while (gpio_get(BTN2) == 0) { }
+        sleep_ms(20);                  
       }
     }
 
