@@ -6,6 +6,8 @@ const int BTN_RED = 28;
 const int LED_RED = 4;
 const int BTN_GREEN = 26;
 const int LED_GREEN = 6;
+bool estado_red = false;
+bool estado_green = false;
 
 int main() {
   stdio_init_all();
@@ -24,21 +26,19 @@ int main() {
   gpio_init(LED_GREEN);
   gpio_set_dir(LED_GREEN, GPIO_OUT);
   while (1) {
-    if (!gpio_get(BTN_RED)) {
+        if (gpio_get(BTN_RED) == 0 && estado_red == false) {
       gpio_put(LED_RED, 1);
-      while (!gpio_get(BTN_RED)) { }
-    }
-    else {
+      estado_red = true;
+    } else if (gpio_get(BTN_RED) == 0 && estado_red == true) {
       gpio_put(LED_RED, 0);
+      estado_red = false;
     }
-
-    if (!gpio_get(BTN_GREEN)) {
+    if (gpio_get(BTN_GREEN) == 0 && estado_green == false) {
       gpio_put(LED_GREEN, 1);
-      while (!gpio_get(BTN_GREEN)) { }
-    }
-    else {
+      estado_green = true;
+    } else if (gpio_get(BTN_GREEN) == 0 && estado_green == true) {
       gpio_put(LED_GREEN, 0);
-    } 
+      estado_green = false;
+    }
   }
-  return 0;
 }
