@@ -2,30 +2,44 @@
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
 
-const int BTN_PIN = 26;
-const int BTN_PIN_2 = 7;
+const int BTN1 = 26;
+const int BTN2 = 7;
 
 int main() {
-    stdio_init_all();
+  stdio_init_all();
 
-    gpio_init(BTN_PIN);
-    gpio_set_dir(BTN_PIN, GPIO_IN);
-    gpio_pull_up(BTN_PIN);
+  gpio_init(BTN1);
+  gpio_set_dir(BTN1, GPIO_IN);
+  gpio_pull_up(BTN1);
 
-    gpio_init(BTN_PIN_2);
-    gpio_set_dir(BTN_PIN_2, GPIO_IN);
-    gpio_pull_up(BTN_PIN_2);
-    int cnt_1 = 0;
-    int cnt_2 = 0;
+  gpio_init(BTN2);
+  gpio_set_dir(BTN2, GPIO_IN);
+  gpio_pull_up(BTN2);
 
-    while (true) {
+  int cnt1 = 0, cnt2 = 0;
 
-        if (!gpio_get(BTN_PIN)) {
-            printf("Botao 1: %d\n", cnt_1++);
-        }
+  while (1) {
+    // Botão 1
+    if (gpio_get(BTN1) == 0) {          // viu um aperto
+      sleep_ms(20);                    // espera “parar de vibrar”
+      if (gpio_get(BTN1) == 0) {       // confirma que ainda está apertado
+        cnt1++;
+        printf("Botao 1: %d\n", cnt1);
 
-        if (!gpio_get(BTN_PIN_2)) {
-            printf("Botao 2: %d\n", cnt_2++);
-        }
+        while (gpio_get(BTN1) == 0) { }  // evita quando segurar o botão e ficar contando, só conta quando soltar e apertar de novo
+      }
     }
+
+    // Botão 2
+    if (gpio_get(BTN2) == 0) {
+      sleep_ms(20);
+      if (gpio_get(BTN2) == 0) {
+        cnt2++;
+        printf("Botao 2: %d\n", cnt2);
+
+        while (gpio_get(BTN2) == 0) { }
+      }
+    }
+
+  }
 }
