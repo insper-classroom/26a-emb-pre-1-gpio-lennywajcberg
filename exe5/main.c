@@ -30,7 +30,7 @@ int main() {
         printf("Botao 2: %d\n", ++cnt2);
         sleep_ms(20);
         while (!gpio_get(BTN2)) 
-        sleep_ms(200);
+        sleep_ms(20);
     }
   }
 }
