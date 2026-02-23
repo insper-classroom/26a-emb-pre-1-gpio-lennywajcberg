@@ -26,7 +26,7 @@ int main() {
   while (1) {
     if (!gpio_get(BTN_RED)) {
       gpio_put(LED_RED, 1);
-      while (!gpio_get(BTN_GREEN)) { }
+      while (!gpio_get(BTN_RED)) { }
     }
     else {
       gpio_put(LED_RED, 0);
@@ -38,7 +38,7 @@ int main() {
     }
     else {
       gpio_put(LED_GREEN, 0);
-    }
+    } 
   }
   return 0;
 }
