@@ -1,6 +1,7 @@
 #include "hardware/gpio.h"
 #include "pico/stdlib.h"
 #include <stdio.h>
+#include <stdbool.h>
 
 const int BTN_RED = 28;
 const int LED_RED = 4;
@@ -26,19 +27,23 @@ int main() {
   gpio_init(LED_GREEN);
   gpio_set_dir(LED_GREEN, GPIO_OUT);
   while (1) {
-        if (gpio_get(BTN_RED) == 0 && estado_red == false) {
+    if (gpio_get(BTN_RED) == 0 && estado_red == false) {
       gpio_put(LED_RED, 1);
       estado_red = true;
+      while (gpio_get(BTN_RED) == 0) { }     // espera soltar
     } else if (gpio_get(BTN_RED) == 0 && estado_red == true) {
       gpio_put(LED_RED, 0);
       estado_red = false;
+      while (gpio_get(BTN_RED) == 0) { }     // espera soltar
     }
     if (gpio_get(BTN_GREEN) == 0 && estado_green == false) {
       gpio_put(LED_GREEN, 1);
       estado_green = true;
+      while (gpio_get(BTN_GREEN) == 0) { }     // espera soltar
     } else if (gpio_get(BTN_GREEN) == 0 && estado_green == true) {
       gpio_put(LED_GREEN, 0);
       estado_green = false;
+      while (gpio_get(BTN_GREEN) == 0) { }     // espera soltar
     }
   }
 }
