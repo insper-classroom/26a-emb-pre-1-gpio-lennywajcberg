@@ -41,12 +41,12 @@ int main(void) {
     gpio_set_dir(BTN_PIN_G, GPIO_IN);
     gpio_pull_up(BTN_PIN_G);
 
+    int cnt = 0;          
     seven_seg_init();
+    seven_seg_display(cnt); 
 
-    int cnt = 2;
     int last_btn = 1;
 
-    seven_seg_display(cnt);
 
     while (true) {
         int btn = gpio_get(BTN_PIN_G);

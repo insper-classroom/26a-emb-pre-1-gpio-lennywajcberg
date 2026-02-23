@@ -3,7 +3,7 @@
 #include "hardware/gpio.h"
 
 const int BTN1 = 26;
-const int BTN2 = 28;
+const int BTN2 = 7;
 
 int main() {
   stdio_init_all();
@@ -19,7 +19,7 @@ int main() {
       if (gpio_get(BTN1) == 0) {
         printf("Botao 1: %d\n", ++cnt1);
         while (gpio_get(BTN1) == 0) { }
-        sleep_ms(20);
+        sleep_ms(1);
       }
     }
 
@@ -28,7 +28,7 @@ int main() {
       if (gpio_get(BTN2) == 0) {
         printf("Botao 2: %d\n", ++cnt2);
         while (gpio_get(BTN2) == 0) { }
-        sleep_ms(20);
+        sleep_ms(1);
       }
     }
   }
