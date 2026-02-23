@@ -6,10 +6,10 @@ const int BTN_RED = 28;
 const int LED_RED = 4;
 const int BTN_GREEN = 26;
 const int LED_GREEN = 6;
-bool estado_red = false;
-bool estado_green = false;
 
 int main() {
+  bool estado_red = false;
+  bool estado_green = false;
   stdio_init_all();
 
   gpio_init(BTN_RED);
